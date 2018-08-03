@@ -104,3 +104,7 @@ alias lla="ls -la"
 alias ...="../.."
 alias pdf2htmlEX='docker run -ti --rm -v `pwd`:/pdf bwits/pdf2htmlex-alpine pdf2htmlEX'
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/bfsong/.sdkman"
+[[ -s "/home/bfsong/.sdkman/bin/sdkman-init.sh" ]] && source "/home/bfsong/.sdkman/bin/sdkman-init.sh"
