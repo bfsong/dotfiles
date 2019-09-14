@@ -129,6 +129,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# open app in workspace
+assign [class=Chromium] $ws1
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -163,7 +166,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $Locker i3lock && sleep 1
+set $Locker i3lock -i ~/Pictures/wallpaper/lock-Wallpaper.png && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -181,8 +184,16 @@ mode "$mode_system" {
 
 bindsym $mod+Pause mode "$mode_system"
 
-bindsym $mod+shift+x exec i3lock
+# 锁屏
+bindsym $mod+shift+x exec i3lock -i ~/Pictures/wallpaper/Beautiful-Wallpaper.png
+
+# polybar透明度设置
 bindsym $mod+shift+t exec transset-df -n polybar
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # screenshot
 bindsym --release Print exec deepin-screenshot
@@ -195,12 +206,16 @@ bindsym --release $mod+Print exec deepin-screenshot -w
 #        status_command i3status
 #}
 
+# 双屏设置
+exec xrandr --output DP-0 --auto --left-of DVI-I-1
+
 exec_always --no-startup-id ~/.config/polybar/launch.sh; transset-df -n polybar
 exec_always --no-startup-id fcitx
 exec_always --no-startup-id albert
 exec_always --no-startup-id guake
 exec_always --no-startup-id dropbox
 exec_always --no-startup-id xfce4-clipman
+exec_always --no-startup-id nm-applet
 exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55
 exec_always --no-startup-id feh --randomize --bg-max ~/Pictures/wallpaper/*
 

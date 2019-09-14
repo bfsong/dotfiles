@@ -253,7 +253,7 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = net1
-interval = 3.0
+interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
@@ -290,7 +290,7 @@ format-disconnected = ""
 
 [module/date]
 type = internal/date
-interval = 5
+interval = .5
 
 date =
 date-alt = " %Y-%m-%d"
