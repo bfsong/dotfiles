@@ -72,6 +72,8 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+bottom = true
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -272,8 +274,8 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp2s0
-interval = 3.0
+interface = wlp0s20u12
+interval = 1.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = ""
